@@ -5,6 +5,7 @@ import Image from "next/image";
 import { HeaderIcon } from "./header-icon";
 import Link from "next/link";
 import { use, useState } from "react";
+import { HeaderSearch } from "./header-search";
 
 type MenuItem = {
   label: string;
@@ -27,7 +28,7 @@ export function Header() {
         </h1>
       </div>
       <div className=" w-full max-w-6xl mx-auto p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center ">
           <div className="w-32">
             <Link href={"/"}>
               <Image
@@ -37,6 +38,27 @@ export function Header() {
                 height={40}
               />
             </Link>
+          </div>
+          <div className="flex-1">
+            <div className="w-full hidden md:flex items-center px-6 gap-6">
+              <div className="flex-1 ">
+                <ul className="flex gap-10">
+                  {menu.map((item) => (
+                    <li
+                      key={item.label}
+                      className="font-medium text-lg text-gray-600"
+                    >
+                      <Link key={item.label} href={item.href}>
+                        <div>{item.label}</div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="w-80">
+                <HeaderSearch />
+              </div>
+            </div>
           </div>
           <div className="flex gap-4">
             <Link href={"/my-orders"}>
@@ -63,7 +85,7 @@ export function Header() {
         </div>
       </div>
       {menuOpened && (
-        <div className="md:hidden ">
+        <div className="md:hidden pb-6">
           {menu.map((item) => (
             <Link key={item.label} href={item.href}>
               <div className="p-6 border-b border-gray-200 flex items-center justify-between">
@@ -81,7 +103,9 @@ export function Header() {
           ))}
         </div>
       )}
-      <div className="p-6 md:hidden">busca mobile</div>
+      <div className="p-6 pt-0 md:hidden">
+        <HeaderSearch />
+      </div>
     </header>
   );
 }
