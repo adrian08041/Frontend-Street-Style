@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { HeaderIcon } from "./header-icon";
 import Link from "next/link";
-import { use, useState } from "react";
+import { useState } from "react";
 import { HeaderSearch } from "./header-search";
 
 type MenuItem = {
@@ -16,6 +16,8 @@ export function Header() {
   const menu: MenuItem[] = [
     { label: "Camisa", href: "/categories/camisa" },
     { label: "Kits", href: "/categories/kits" },
+    { label: "Acessórios", href: "/categories/acessorios" },
+    { label: "Eletrônicos", href: "/categories/eletronicos" },
   ];
 
   const [menuOpened, setMenuOpened] = useState(false);
@@ -34,7 +36,7 @@ export function Header() {
               <Image
                 src="/assets/ui/streetlogo.png"
                 alt="Logo"
-                width={120}
+                width={420}
                 height={40}
               />
             </Link>
